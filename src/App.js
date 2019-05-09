@@ -4,16 +4,16 @@ import "./App.css";
 import Counter from "./Counter";
 import CounterClass from "./CounterClass";
 import SignUpForm from "./SignUpForm";
+import Todos from "./Todos";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          {/* <Counter /> */}
-          {/* <CounterClass /> */}
-          <SignUpForm />
-        </header>
+        {/* <Counter /> */}
+        {/* <CounterClass /> */}
+        {/* <SignUpForm /> */}
+        <Todos />
       </div>
     );
   }
