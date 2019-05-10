@@ -13,6 +13,11 @@ code {
     monospace;
 }
 
+pre {
+  color: #bada55;
+}
+
+input,
 label {
-  padding-right: 10px;
+  margin-right: 10px;
 }

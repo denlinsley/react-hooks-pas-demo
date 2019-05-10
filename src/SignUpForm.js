@@ -1,7 +1,7 @@
 import React from "react";
 import useForm from "./useForm";
 
-export default function SignUpForm() {
+function SignUpForm() {
   const signup = () => {
     alert(
       `User Created!
@@ -13,7 +13,7 @@ export default function SignUpForm() {
   const { inputs, handleInputChange, handleSubmit } = useForm(signup);
 
   return (
-    <form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>First Name</label>
         <input
@@ -21,7 +21,6 @@ export default function SignUpForm() {
           name="firstName"
           onChange={handleInputChange}
           value={inputs.firstName}
-          required
         />
         <div>
           <label>Last Name</label>
@@ -30,7 +29,6 @@ export default function SignUpForm() {
             name="lastName"
             onChange={handleInputChange}
             value={inputs.lastName}
-            required
           />
         </div>
       </div>
@@ -41,7 +39,6 @@ export default function SignUpForm() {
           name="email"
           onChange={handleInputChange}
           value={inputs.email}
-          required
         />
       </div>
       <div>
@@ -51,7 +48,6 @@ export default function SignUpForm() {
           name="password1"
           onChange={handleInputChange}
           value={inputs.password1}
-          required
         />
       </div>
       <div>
@@ -61,10 +57,11 @@ export default function SignUpForm() {
           name="password2"
           onChange={handleInputChange}
           value={inputs.password2}
-          required
         />
       </div>
       <button type="submit">Sign Up</button>
     </form>
   );
 }
+
+export default SignUpForm;

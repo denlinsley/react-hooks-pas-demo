@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useForm(callback) {
+function useForm(callback) {
   const [inputs, setInputs] = useState({});
 
   const handleSubmit = event => {
@@ -9,7 +9,6 @@ export default function useForm(callback) {
   };
 
   const handleInputChange = event => {
-    // TODO: explain this
     event.persist();
     setInputs(inputs => ({
       ...inputs,
@@ -23,3 +22,5 @@ export default function useForm(callback) {
     handleInputChange
   };
 }
+
+export default useForm;

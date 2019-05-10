@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Counter extends React.Component {
+class CounterClass extends React.Component {
   state = {
     count: 0,
     name: "You"
@@ -10,7 +10,7 @@ export default class Counter extends React.Component {
     document.title = `${this.state.name} clicked ${this.state.count} times`;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     document.title = `${this.state.name} clicked ${this.state.count} times`;
   }
 
@@ -19,9 +19,11 @@ export default class Counter extends React.Component {
       <div>
         <input
           value={this.state.name}
-          onChange={e => this.setState({ name: e.target.value })}
+          onChange={event => this.setState({ name: event.target.value })}
         />
-        <p>You clicked {this.state.count} times</p>
+        <p>
+          {this.state.name} clicked {this.state.count} times
+        </p>
         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
           Click me
         </button>
@@ -29,3 +31,5 @@ export default class Counter extends React.Component {
     );
   }
 }
+
+export default CounterClass;

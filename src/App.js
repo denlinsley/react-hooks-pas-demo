@@ -3,17 +3,24 @@ import "./App.css";
 
 import Counter from "./Counter";
 import CounterClass from "./CounterClass";
-import SignUpForm from "./SignUpForm";
 import Todos from "./Todos";
+import SignUpForm from "./SignUpForm";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Counter /> */}
-        {/* <CounterClass /> */}
-        {/* <SignUpForm /> */}
+        <pre>Counter</pre>
+        <Counter />
+        <hr />
+        <pre>CounterClass</pre>
+        <CounterClass />
+        <hr />
+        <pre>Todos</pre>
         <Todos />
+        <hr />
+        <pre>SignupForm</pre>
+        <SignUpForm />
       </div>
     );
   }

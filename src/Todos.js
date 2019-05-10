@@ -1,14 +1,16 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 
 function todosReducer(state, action) {
-  console.log({ state, action });
   switch (action.type) {
     case "ADD_TODO":
+      const id = Date.now();
       return {
+        selectedId: id,
         todos: [
           ...state.todos,
           {
-            id: Date.now(),
+            id,
+            selectedId: id,
             isEditing: true,
             text: "",
             completed: false
@@ -17,12 +19,14 @@ function todosReducer(state, action) {
       };
     case "EDIT_TODO":
       return {
+        selectedId: action.id,
         todos: state.todos.map(todo =>
           todo.id === action.id ? { ...todo, ...action.update } : todo
         )
       };
     case "DELETE_TODO":
       return {
+        selectedId: null,
         todos: state.todos.filter(todo => todo.id !== action.id)
       };
     default:
@@ -30,12 +34,18 @@ function todosReducer(state, action) {
   }
 }
 
-export default function Todos() {
+function Todos() {
   const initialState = {
-    // todos: [{ id: 1, text: "Finish hooks presentation", completed: false }]
+    selectedId: null,
     todos: []
   };
   const [state, dispatch] = useReducer(todosReducer, initialState);
+
+  useEffect(() => {
+    if (state.selectedId) {
+      alert(`Selected id is ${state.selectedId}`);
+    }
+  }, [state.selectedId]);
 
   return (
     <div>
@@ -56,7 +66,9 @@ export default function Todos() {
                   })
                 }
               />
-              {todo.isEditing ? (
+              {!todo.isEditing ? (
+                <div>{todo.text}</div>
+              ) : (
                 <input
                   type="text"
                   value={todo.text}
@@ -68,8 +80,6 @@ export default function Todos() {
                     })
                   }
                 />
-              ) : (
-                <div>{todo.text}</div>
               )}
               <button
                 onClick={() =>
@@ -95,3 +105,5 @@ export default function Todos() {
     </div>
   );
 }
+
+export default Todos;
